@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../modules//data-stores/mysql"
+  source = "../../modules//data-stores/mysql"
 }
 
 include {
