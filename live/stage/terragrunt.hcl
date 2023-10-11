@@ -22,3 +22,8 @@ remote_state {
 
   }
 }
+
+# * The include block finds the root terragrunt.hcl file with using the find_in_parent_folders() built-in function
+# in Terragrunt, and automatically inherits all its parameters, including the remote_state configuration. As a result this
+# the mysql module will use the same backend settings, same as the root file, and the key field will be automatically
+# assigned meaning: data-stores/mysql/terraform.tfstate.
