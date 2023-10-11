@@ -20,4 +20,7 @@ inputs = {
   enable_autoscaling = false
 
   mysql_config = dependency.mysql.outputs
+
+#  db_remote_state_bucket = "<YOUR_BUCKET_NAME>"
+#  db_remote_state_key = "<YOUR_KEY>"
 }
