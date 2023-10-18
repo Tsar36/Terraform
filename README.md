@@ -1,2 +1,2 @@
 # Terraform
-Code examples for build cluster-asg rolling deploy included using Terragrunt
+Code examples for building 'cluster-asg' rolling deploy using Terraform/Terragrunt
