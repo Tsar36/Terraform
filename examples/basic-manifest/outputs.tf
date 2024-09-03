@@ -8,14 +8,14 @@
 #   value = aws_instance.myec2vm[0].public_ip
 # }
 # EC2 IP. Accessing All Instances (If set 'count')
-output "instance_publicip" {
-  description = "Accessing instances public IP"
-  value = [for instance in aws_instance.myec2vm : instance.public_ip]
-}
-# EC2 Instance Public DNS
-output "instance_publicdns" {
-  value = [for instance in aws_instance.myec2vm : instance.public_dns]
-}
+# output "instance_publicip" {
+#   description = "Accessing instances public IP"
+#   value = [for instance in aws_instance.myec2vm : instance.public_ip]
+# }
+# # EC2 Instance Public DNS
+# output "instance_publicdns" {
+#   value = [for instance in aws_instance.myec2vm : instance.public_dns]
+# }
 # output "instance_publicdns" {
 #   description = "EC2 Instance Public DNS"
 #   value = aws_instance.myec2vm.public_dns
