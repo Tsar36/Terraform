@@ -29,7 +29,7 @@ variable "environment" {
 }
 
 # Business Devision
-variable "business_devision" {
+variable "business_division" {
   description = "Business devision in a large organization"
   type = string
   default = "SAP"
