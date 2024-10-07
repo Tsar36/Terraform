@@ -1,3 +1,3 @@
 # Generic variables
-business_devision = "dev"
+business_devision = "HR"
 environment = "stage"

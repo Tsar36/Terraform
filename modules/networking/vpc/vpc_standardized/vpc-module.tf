@@ -4,19 +4,18 @@ module "vpc" {
   version = "3.18.1"
 
   # VPC Basic details:
-  name            = "vpc-dev"
-  cidr            = "10.0.0.0/16"
-  azs             = ["us-east-2a", "us-east-2b"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
+  name            = "${local.name}-${var.vpc_name}"
+  cidr            = var.vpc_cidr_block
+  azs             = var.vpc_availability_zones
+  private_subnets = var.vpc_private_subnets
+  public_subnets  = var.vpc_public_subnets
 
   # Database subnets:
   create_database_subnet_group       = true
   create_database_subnet_route_table = true
-  #   create_database_nat_gateway_route = true/false
-  #   create_database_internet_gateway_route = true/false
-
-  database_subnets = ["10.0.21.0/24", "10.0.22.0/24", "10.0.23.0/24"]
+  # create_database_nat_gateway_route = true
+  # create_database_internet_gateway_route = true
+  database_subnets = var.vpc_database_subnets
 
   # Enable NAT Gateway for 'private_subnets' (outbound Communication)
   enable_nat_gateway = true
