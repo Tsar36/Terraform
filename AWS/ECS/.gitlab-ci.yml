@@ -1,0 +1,38 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+variables:
+  AWS_REGION: "us-east-1"
+  ECS_CLUSTER: "ecs-cluster"
+  ECS_SERVICE: "ecs-app-service"
+  CONTAINER_IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA"
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+
+before_script:
+  - apk add --no-cache python3 py3-pip
+  - pip3 install awscli
+  - $(aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $CI_REGISTRY)
+
+build:
+  stage: build
+  script:
+    - docker build -t $CONTAINER_IMAGE .
+    - docker push $CONTAINER_IMAGE
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Updating ECS Service"
+    - >
+      aws ecs update-service \
+      --cluster $ECS_CLUSTER \
+      --service $ECS_SERVICE \
+      --force-new-deployment \
+      --region $AWS_REGION
