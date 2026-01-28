@@ -6,7 +6,6 @@
 #    - Auto Scaling Group using 2 Availability Zones
 #    - Classic Load Balancer in 2 Availability Zones
 #
-# Made by Denis Astahov 11-June-2019
 #-----------------------------------------------------------
 
 provider "aws" {
