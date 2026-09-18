@@ -1,4 +1,4 @@
-module "vpc" {
+module "vpc_basic" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.18.1"
 
