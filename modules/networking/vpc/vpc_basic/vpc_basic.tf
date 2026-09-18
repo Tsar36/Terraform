@@ -1,10 +1,9 @@
-# Terraform module which creates VPC Resources on AWS
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.18.1"
 
   # VPC Basic details:
-  name            = "${local.name}-${var.vpc_name}"
+  name            = var.vpc_name
   cidr            = var.vpc_cidr_block
   azs             = var.vpc_availability_zones
   private_subnets = var.vpc_private_subnets
@@ -26,21 +25,19 @@ module "vpc" {
   enable_dns_support   = true
 
   public_subnet_tags = {
-    Name = "public-subnets"
+	Name = "public-subnets"
   }
   private_subnet_tags = {
-    Name = "private-subnets"
+	Name = "private-subnets"
   }
   database_subnet_tags = {
-    Name = "database-subnets"
+	Name = "database-subnets"
   }
   tags = {
-    Owner       = "TsaR"
-    Environment = "dev"
+	Owner       = "TsaR"
+	Environment = "dev"
   }
   vpc_tags = {
-    Name = "vpc-dev"
+	Name = "vpc-dev"
   }
-
-
-}
+}	
